@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const path = require('path')
 
 const loginRouter = require('./controllers/login')
 const blogsRouter = require('./controllers/blogs')
@@ -28,6 +29,7 @@ app.use('/api/blogs', blogsRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 
+app.get('*', (request, response) => response.sendFile(path.resolve('build', 'index.html')))
 
 app.use(middleware.errorHandler)
 
