@@ -18,6 +18,7 @@ mongoose.connect(config.MONGO_URL)
     .catch(error => console.log(error))
 
 app.use(cors())
+app.use(express.static('build'))
 app.use(express.json()) //parses body of request
 
 app.use(middleware.tokenExtractor)
